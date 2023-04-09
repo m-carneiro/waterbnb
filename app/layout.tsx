@@ -1,7 +1,9 @@
 import {Nunito} from "next/font/google";
 import './globals.css'
 import React, {ReactNode} from "react";
-import NavBar from "./components/NavBar";
+import ClientOnly from "./components/ClientOnly";
+import Modal from "./components/modals/Modal";
+import NavBar from "./components/navbar/NavBar";
 
 export const metadata = {
     title: 'Waterbnb',
@@ -20,7 +22,10 @@ export default function RootLayout({
     return (
         <html lang="en">
         <body className={font.className}>
-        <NavBar />
+        <ClientOnly>
+            <Modal isOpen />
+            <NavBar/>
+        </ClientOnly>
         {children}
         </body>
         </html>
